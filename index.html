@@ -198,45 +198,36 @@
     <script>
         // Detect ad blocker by checking if ads are loaded
         function detectAdBlocker() {
-            // Check if the adsbygoogle array exists and if ads were pushed
-            const adsbygoogle = window.adsbygoogle || [];
+            // Configuration: time to wait for ads to load (in milliseconds)
+            const AD_LOAD_TIMEOUT = 2000;
             
-            // Wait a bit for ads to load
+            // Wait for ads to attempt loading
             setTimeout(function() {
-                // Check if ads were actually rendered
                 const adElements = document.querySelectorAll('.adsbygoogle');
                 let adsBlocked = false;
                 
+                // Only proceed if there are ad elements on the page
                 if (adElements.length > 0) {
-                    // Check if any ad element has data-ad-status attribute
-                    // or if it's empty (indicating blocked)
+                    // Check each ad element for signs of blocking
                     adElements.forEach(function(ad) {
                         const adStatus = ad.getAttribute('data-ad-status');
                         const adHeight = ad.offsetHeight;
                         
-                        // If ad has no height or is marked as unfilled, it's likely blocked
+                        // Ad is blocked if it has no height or is marked as unfilled
                         if (adHeight === 0 || adStatus === 'unfilled') {
                             adsBlocked = true;
                         }
                     });
                     
-                    // Also check if adsbygoogle array is empty (common with ad blockers)
-                    if (adsbygoogle.length === 0) {
-                        adsBlocked = true;
-                    }
-                } else {
-                    // No ad elements found at all
-                    adsBlocked = true;
-                }
-                
-                // Show Ko-fi link if ads are blocked
-                if (adsBlocked) {
-                    const kofiContainer = document.getElementById('kofi-container');
-                    if (kofiContainer) {
-                        kofiContainer.style.display = 'block';
+                    // Show Ko-fi link if ads are blocked
+                    if (adsBlocked) {
+                        const kofiContainer = document.getElementById('kofi-container');
+                        if (kofiContainer) {
+                            kofiContainer.style.display = 'block';
+                        }
                     }
                 }
-            }, 2000); // Wait 2 seconds for ads to load
+            }, AD_LOAD_TIMEOUT);
         }
         
         // Run ad blocker detection after page load
