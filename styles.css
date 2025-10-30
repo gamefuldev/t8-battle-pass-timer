@@ -153,11 +153,14 @@ h1 {
     align-items: center;
     justify-content: center;
     border: 2px dashed rgba(255, 255, 255, 0.2);
+    position: relative;
 }
 
 .ad-placeholder {
     color: #7f8c8d;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
@@ -203,12 +206,15 @@ h1 {
 
 /* Ko-fi Support Container */
 .kofi-container {
-    margin-top: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
     text-align: center;
-    border: 2px solid rgba(215, 49, 85, 0.3);
+    z-index: 1;
+    width: calc(100% - 4rem);
+    max-width: 400px;
 }
 
 .kofi-container p {

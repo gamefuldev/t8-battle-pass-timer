@@ -60,6 +60,14 @@
 
         <!-- Google AdSense Container -->
         <div class="ad-container">
+            <!-- Ko-fi Support Link (positioned behind ads) -->
+            <div class="kofi-container">
+                <p>Enjoying this timer? Consider supporting the creator!</p>
+                <a href="https://ko-fi.com/jazibobs" target="_blank" rel="noopener noreferrer" class="kofi-link">
+                    ☕ Support on Ko-fi
+                </a>
+            </div>
+            
             <div class="ad-placeholder">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107538551982634"
                     crossorigin="anonymous"></script>
@@ -74,14 +82,6 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-        </div>
-        
-        <!-- Ko-fi Support Link (shown when ad blocker is detected) -->
-        <div id="kofi-container" class="kofi-container" style="display: none;">
-            <p>Enjoying this timer? Consider supporting the creator!</p>
-            <a href="https://ko-fi.com/jazibobs" target="_blank" rel="noopener noreferrer" class="kofi-link">
-                ☕ Support on Ko-fi
-            </a>
         </div>
 				<div class="footer">
 					<p>fightpass.gg is not affiliated with, endorsed, or sponsored by Bandai Namco Entertainment Inc. or any of its subsidiaries.</p> 
@@ -191,50 +191,6 @@
             document.addEventListener('DOMContentLoaded', init);
         } else {
             init();
-        }
-    </script>
-
-    <!-- Ad Blocker Detection Script -->
-    <script>
-        // Detect ad blocker by checking if ads are loaded
-        function detectAdBlocker() {
-            // Configuration: time to wait for ads to load (in milliseconds)
-            const AD_LOAD_TIMEOUT = 2000;
-            
-            // Wait for ads to attempt loading
-            setTimeout(function() {
-                const adElements = document.querySelectorAll('.adsbygoogle');
-                let adsBlocked = false;
-                
-                // Only proceed if there are ad elements on the page
-                if (adElements.length > 0) {
-                    // Check each ad element for signs of blocking
-                    adElements.forEach(function(ad) {
-                        const adStatus = ad.getAttribute('data-ad-status');
-                        const adHeight = ad.offsetHeight;
-                        
-                        // Ad is blocked if it has no height or is marked as unfilled
-                        if (adHeight === 0 || adStatus === 'unfilled') {
-                            adsBlocked = true;
-                        }
-                    });
-                    
-                    // Show Ko-fi link if ads are blocked
-                    if (adsBlocked) {
-                        const kofiContainer = document.getElementById('kofi-container');
-                        if (kofiContainer) {
-                            kofiContainer.style.display = 'block';
-                        }
-                    }
-                }
-            }, AD_LOAD_TIMEOUT);
-        }
-        
-        // Run ad blocker detection after page load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', detectAdBlocker);
-        } else {
-            detectAdBlocker();
         }
     </script>
 </body>
