@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Countdown timer for the current Tekken 8 battle pass. Track when the current battle pass ends.">
+    <title>Tekken 8 Battle Pass Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f39c12;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #bdc3c7;
+        }
+
+        .timer-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            min-width: 100px;
+            border: 2px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .time-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f39c12;
+            display: block;
+            line-height: 1;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-section {
+            margin-top: 2rem;
+        }
+
+        .progress-label {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+            border-radius: 15px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+        }
+
+        .progress-percentage {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .battle-pass-info {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        .ad-container {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .ad-placeholder {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 1rem 0.5rem;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+
+            .time-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        .expired {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tekken 8 Battle Pass Timer</h1>
+        <p class="subtitle">Countdown to Battle Pass End</p>
+
+        <div class="timer-container">
+            <div class="countdown" id="countdown">
+                <div class="time-unit">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-label">Battle Pass Progress</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <span class="progress-percentage" id="progressPercentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="battle-pass-info">
+                <p>Start: <span id="startDate">-</span></p>
+                <p>End: <span id="endDate">-</span></p>
+            </div>
+        </div>
+
+        <!-- Google AdSense Container -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Place your Google AdSense code here -->
+                <p>Advertisement Space</p>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem;">
+                    Replace this placeholder with Google AdSense code
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Battle Pass Configuration
+        // Update these dates for each new battle pass
+        const battlePassConfig = {
+            // Example dates - Update these with actual Tekken 8 battle pass dates
+            startDate: new Date('2025-10-01T00:00:00Z'),
+            endDate: new Date('2025-12-31T23:59:59Z')
+        };
+
+        // Format date for display
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Update countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endTime = battlePassConfig.endDate.getTime();
+            const startTime = battlePassConfig.startDate.getTime();
+            
+            const distance = endTime - now;
+            const totalDuration = endTime - startTime;
+            const elapsed = now - startTime;
+
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update display
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            // Calculate and update progress
+            let progressPercent = 0;
+            if (elapsed >= 0 && elapsed <= totalDuration) {
+                progressPercent = (elapsed / totalDuration) * 100;
+            } else if (elapsed > totalDuration) {
+                progressPercent = 100;
+            }
+
+            const progressBar = document.getElementById('progressBar');
+            const progressPercentage = document.getElementById('progressPercentage');
+            progressBar.style.width = progressPercent + '%';
+            progressPercentage.textContent = progressPercent.toFixed(1) + '%';
+
+            // Check if expired
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = 
+                    '<div class="time-unit expired"><span class="time-value">EXPIRED</span><span class="time-label">Battle Pass Ended</span></div>';
+                progressBar.style.width = '100%';
+                progressPercentage.textContent = '100%';
+            }
+        }
+
+        // Initialize
+        function init() {
+            // Display dates
+            document.getElementById('startDate').textContent = formatDate(battlePassConfig.startDate);
+            document.getElementById('endDate').textContent = formatDate(battlePassConfig.endDate);
+
+            // Start countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Run on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
