@@ -1,5 +1,7 @@
 # Tekken 8 Battle Pass Timer
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3804135b-cc7a-48dd-8448-6ddca28c7bdf/deploy-status)](https://app.netlify.com/projects/t8-fight-pass-countdown/deploys)
+
 A web application that provides a countdown timer to track when the current Tekken 8 battle pass ends. Features include:
 
 - **Live Countdown Timer**: Real-time countdown showing days, hours, minutes, and seconds remaining
