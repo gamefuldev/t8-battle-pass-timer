@@ -153,11 +153,14 @@ h1 {
     align-items: center;
     justify-content: center;
     border: 2px dashed rgba(255, 255, 255, 0.2);
+    position: relative;
 }
 
 .ad-placeholder {
     color: #7f8c8d;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
@@ -199,6 +202,44 @@ h1 {
   opacity: 0.5;
   padding: 2rem 1rem 1rem;
   font-size: 80%;
+}
+
+/* Ko-fi Support Container */
+.kofi-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem;
+    text-align: center;
+    z-index: 1;
+    width: calc(100% - 4rem);
+    max-width: 400px;
+}
+
+.kofi-container p {
+    color: #ecf0f1;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.kofi-link {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #d73155 0%, #c72850 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(215, 49, 85, 0.3);
+}
+
+.kofi-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(215, 49, 85, 0.5);
+    background: linear-gradient(135deg, #e73b61 0%, #d73155 100%);
 }
 
 /* Mobile-specific tweaks for small screens */
@@ -295,5 +336,20 @@ h1 {
 
     h1 {
         font-size: 1.4rem;
+    }
+
+    .kofi-container {
+        padding: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .kofi-container p {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .kofi-link {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
