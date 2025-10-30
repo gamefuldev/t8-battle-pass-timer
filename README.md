@@ -13,7 +13,7 @@ The site provides a countdown timer to track when the current Tekken 8 fight pas
 
 ## Demo
 
-Visit [fightpass.gg] to see the live timer.
+Visit [fightpass.gg](https://fightpass.gg) to see the live timer.
 
 ## Features
 
