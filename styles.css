@@ -1,0 +1,292 @@
+@font-face {
+  font-family: "Tarrget";
+  src: url(./fonts/tarrget/tarrgetcondital.ttf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #040a1a 0%, #0a1628 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+  font-family: "Tarrget", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #bdc3c7;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: #bdc3c7;
+}
+
+.timer-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.time-collection {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem 1rem;
+    min-width: 100px;
+    border: 2px solid rgba(215, 49, 85, 0.3);
+}
+
+.time-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d73155;
+    display: block;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-section {
+    margin-top: 2rem;
+}
+
+.progress-label {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #ecf0f1;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(215, 49, 85, 0.3);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #d73155 0%, #c72850 100%);
+    border-radius: 15px;
+    transition: width 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.progress-percentage {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.fight-pass-info {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #95a5a6;
+}
+
+.ad-container {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.ad-placeholder {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .countdown {
+        gap: 1rem;
+    }
+
+    .time-collection {
+      gap: 1rem;
+    }
+
+    .time-unit {
+        min-width: 80px;
+        padding: 1rem 0.5rem;
+    }
+
+    .time-value {
+        font-size: 2rem;
+    }
+
+    .time-label {
+        font-size: 0.8rem;
+    }
+}
+
+.expired {
+    color: #e74c3c;
+}
+
+.footer {
+  opacity: 0.5;
+  padding: 2rem 1rem 1rem;
+  font-size: 80%;
+}
+
+/* Mobile-specific tweaks for small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .timer-container {
+        padding: 1.25rem 1rem;
+        border-radius: 12px;
+    }
+
+    .countdown {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+
+    .time-collection {
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+
+    .time-unit {
+        min-width: 70px;
+        padding: 0.8rem 0.6rem;
+        border-radius: 10px;
+    }
+
+    .time-value {
+        font-size: 1.6rem;
+    }
+
+    .time-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+
+    .progress-bar-container {
+        height: 20px;
+        border-radius: 10px;
+    }
+
+    .progress-bar {
+        padding-right: 6px;
+        border-radius: 10px;
+    }
+
+    .progress-percentage {
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    /* Make start/end text wrap safely and reduce font size */
+    .fight-pass-info {
+        font-size: 0.82rem;
+        margin-top: 1rem;
+        color: #a7b2b2;
+    }
+
+    .fight-pass-info span {
+        display: inline-block;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Extra-tight adjustments for very small screens */
+@media (max-width: 360px) {
+    .countdown {
+      gap: 0.5rem;
+    }
+
+    .time-collection {
+      gap: 0.5rem;
+    }
+
+    .time-unit {
+        min-width: 60px;
+        padding: 0.6rem 0.5rem;
+    }
+
+    .time-value {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+}
