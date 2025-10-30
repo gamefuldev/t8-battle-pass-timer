@@ -2,7 +2,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3804135b-cc7a-48dd-8448-6ddca28c7bdf/deploy-status)](https://app.netlify.com/projects/t8-fight-pass-countdown/deploys)
 
-A web application that provides a countdown timer to track when the current Tekken 8 battle pass ends. Features include:
+A quick and dirty web application to test the workflow of GitHub agents. 
+
+The site provides a countdown timer to track when the current Tekken 8 fight pass ends. Features include:
 
 - **Live Countdown Timer**: Real-time countdown showing days, hours, minutes, and seconds remaining
 - **Progress Bar**: Visual representation of how much time has elapsed since the battle pass started
@@ -11,7 +13,7 @@ A web application that provides a countdown timer to track when the current Tekk
 
 ## Demo
 
-Visit [your-domain.com] to see the live timer.
+Visit [fightpass.gg] to see the live timer.
 
 ## Features
 
@@ -20,7 +22,7 @@ Visit [your-domain.com] to see the live timer.
 - 📱 Fully responsive design for all devices
 - 🎨 Modern, clean UI with gradient background
 - 💰 Google AdSense integration area
-- 🎮 Tekken 8 themed color scheme (gold/orange)
+- 🎮 Tekken 8 themed color scheme (grey/pink)
 
 ## Updating Battle Pass Dates
 
@@ -66,12 +68,7 @@ To add Google AdSense advertisements:
 
 ## Deployment
 
-This is a static website that can be deployed to any web hosting service:
-
-- **GitHub Pages**: Push to a GitHub repository and enable GitHub Pages
-- **Netlify**: Drag and drop the files or connect your repository
-- **Vercel**: Deploy with a single command or through the web interface
-- **Traditional Hosting**: Upload files via FTP to any web server
+This is a static website that is currently deployed on Netlify
 
 ## Local Development
 
