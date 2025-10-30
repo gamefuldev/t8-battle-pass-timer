@@ -25,7 +25,7 @@ Visit [your-domain.com] to see the live timer.
 To update the dates for a new battle pass season:
 
 1. Open `index.html`
-2. Locate the `battlePassConfig` object in the `<script>` section (around line 197)
+2. Locate the `battlePassConfig` object in the `<script>` section (around line 234)
 3. Update the `startDate` and `endDate` with the new battle pass dates:
 
 ```javascript
@@ -43,7 +43,7 @@ const battlePassConfig = {
 To add Google AdSense advertisements:
 
 1. Open `index.html`
-2. Find the `<div class="ad-container">` section (around line 173)
+2. Find the `<div class="ad-container">` section (around line 220)
 3. Replace the placeholder content with your Google AdSense code:
 
 ```html
