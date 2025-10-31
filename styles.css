@@ -38,6 +38,28 @@ body {
   text-align: center;
 }
 
+.navigation {
+  text-align: right;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+.nav-link {
+  color: #d73155;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  background: rgba(215, 49, 85, 0.1);
+  color: #e73b61;
+}
+
 h1 {
   font-family: 'Tarrget', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3rem;
@@ -202,6 +224,41 @@ h1 {
   opacity: 0.5;
   padding: 2rem 1rem 1rem;
   font-size: 80%;
+}
+
+/* About Page Styles */
+.about-content {
+  text-align: left;
+}
+
+.about-content h2 {
+  color: #d73155;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-content h2:first-child {
+  margin-top: 0;
+}
+
+.about-content p {
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-content ul {
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
 }
 
 /* Ko-fi Support Container */
