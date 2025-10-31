@@ -9,12 +9,6 @@ const fightPassConfig = {
 // Display timezone to force for date/time outputs. Change if you want a different zone.
 const DISPLAY_TIMEZONE = 'UTC'
 
-// Format date for display (date only)
-function formatDate(date) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' }
-  return date.toLocaleDateString('en-US', options)
-}
-
 // Format date & time for display with forced timezone (e.g. "October 1, 2025, 00:00 UTC")
 // Uses Intl formatting with the requested timeZone and appends an explicit UTC label if needed.
 function formatDateTime(date, timeZone = DISPLAY_TIMEZONE) {
@@ -49,6 +43,18 @@ function updateCountdown() {
   const totalDuration = endTime - startTime
   const elapsed = now - startTime
 
+  const progressBar = document.getElementById('progressBar')
+  const progressPercentage = document.getElementById('progressPercentage')
+
+  // Check if expired
+  if (distance < 0) {
+    document.getElementById('countdown').innerHTML =
+      '<div class="time-unit expired"><span class="time-value">EXPIRED</span><span class="time-label">Fight Pass Ended</span></div>'
+    progressBar.style.width = '100%'
+    progressPercentage.textContent = '100%'
+    return
+  }
+
   // Calculate time units
   const days = Math.floor(distance / (1000 * 60 * 60 * 24))
   const hours = Math.floor(
@@ -77,18 +83,8 @@ function updateCountdown() {
     progressPercent = 100
   }
 
-  const progressBar = document.getElementById('progressBar')
-  const progressPercentage = document.getElementById('progressPercentage')
   progressBar.style.width = progressPercent + '%'
   progressPercentage.textContent = progressPercent.toFixed(1) + '%'
-
-  // Check if expired
-  if (distance < 0) {
-    document.getElementById('countdown').innerHTML =
-      '<div class="time-unit expired"><span class="time-value">EXPIRED</span><span class="time-label">Fight Pass Ended</span></div>'
-    progressBar.style.width = '100%'
-    progressPercentage.textContent = '100%'
-  }
 }
 
 // Initialize
