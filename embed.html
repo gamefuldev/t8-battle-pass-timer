@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tekken 8 Fight Pass Timer - Embed</title>
+    <style>
+      @font-face {
+        font-family: 'Tarrget';
+        src: url(./fonts/tarrget/tarrgetcondital.ttf);
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #040a1a 0%, #0a1628 100%);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .white {
+        color: #fff;
+      }
+
+      .pink {
+        color: #d73155;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: 'Tarrget', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #bdc3c7;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .timer-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .time-collection {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .time-unit {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem 1rem;
+        min-width: 100px;
+        border: 2px solid rgba(215, 49, 85, 0.3);
+      }
+
+      .time-value {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #d73155;
+        display: block;
+        line-height: 1;
+      }
+
+      .time-label {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .progress-section {
+        margin-top: 2rem;
+      }
+
+      .progress-label {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #ecf0f1;
+      }
+
+      .progress-bar-container {
+        width: 100%;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 2px solid rgba(215, 49, 85, 0.3);
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #d73155 0%, #c72850 100%);
+        border-radius: 15px;
+        transition: width 1s ease;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+      }
+
+      .progress-percentage {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .fight-pass-info {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #95a5a6;
+      }
+
+      .expired {
+        color: #e74c3c;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .countdown {
+          gap: 1rem;
+        }
+
+        .time-collection {
+          gap: 1rem;
+        }
+
+        .time-unit {
+          min-width: 80px;
+          padding: 1rem 0.5rem;
+        }
+
+        .time-value {
+          font-size: 2rem;
+        }
+
+        .time-label {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 12px;
+        }
+
+        h1 {
+          font-size: 1.6rem;
+          line-height: 1.1;
+          margin-bottom: 1rem;
+        }
+
+        .timer-container {
+          padding: 1.25rem 1rem;
+          border-radius: 12px;
+        }
+
+        .countdown {
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+          justify-content: center;
+        }
+
+        .time-collection {
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+          justify-content: center;
+        }
+
+        .time-unit {
+          min-width: 70px;
+          padding: 0.8rem 0.6rem;
+          border-radius: 10px;
+        }
+
+        .time-value {
+          font-size: 1.6rem;
+        }
+
+        .time-label {
+          font-size: 0.65rem;
+          letter-spacing: 0.5px;
+        }
+
+        .progress-bar-container {
+          height: 20px;
+          border-radius: 10px;
+        }
+
+        .progress-bar {
+          padding-right: 6px;
+          border-radius: 10px;
+        }
+
+        .progress-percentage {
+          font-size: 0.75rem;
+          white-space: nowrap;
+        }
+
+        .fight-pass-info {
+          font-size: 0.82rem;
+          margin-top: 1rem;
+          color: #a7b2b2;
+        }
+
+        .fight-pass-info span {
+          display: inline-block;
+          max-width: 100%;
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .countdown {
+          gap: 0.5rem;
+        }
+
+        .time-collection {
+          gap: 0.5rem;
+        }
+
+        .time-unit {
+          padding: 0.6rem 0.5rem;
+        }
+
+        .time-value {
+          font-size: 1.4rem;
+        }
+
+        h1 {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <span class="white">TEKKEN</span>&nbsp;<span class="pink">8</span><br />
+        Fight&nbsp;Pass Round&nbsp;7
+      </h1>
+
+      <div class="timer-container">
+        <div class="countdown" id="countdown">
+          <div class="time-collection">
+            <div class="time-unit">
+              <span class="time-value" id="days">00</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-unit">
+              <span class="time-value" id="hours">00</span>
+              <span class="time-label">Hours</span>
+            </div>
+          </div>
+          <div class="time-collection">
+            <div class="time-unit">
+              <span class="time-value" id="minutes">00</span>
+              <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-unit">
+              <span class="time-value" id="seconds">00</span>
+              <span class="time-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-label">Fight Pass Progress</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar">
+              <span class="progress-percentage" id="progressPercentage"
+                >0%</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="fight-pass-info" aria-live="polite">
+          <p>
+            Tekken 8 Fight Pass Round 7 Started: <span id="startDate">-</span>
+          </p>
+          <p>Ends: <span id="endDate">-</span></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="timer.js"></script>
+  </body>
+</html>
