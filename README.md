@@ -10,6 +10,7 @@ The site provides a countdown timer to track when the current Tekken 8 fight pas
 - **Progress Bar**: Visual representation of how much time has elapsed since the battle pass started
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Google AdSense Ready**: Includes a dedicated section for advertisement integration
+- **Embeddable Timer**: Minimal embed.html page for embedding the timer on external websites
 
 ## Demo
 
@@ -23,17 +24,18 @@ Visit [fightpass.gg](https://fightpass.gg) to see the live timer.
 - 🎨 Modern, clean UI with gradient background
 - 💰 Google AdSense integration area
 - 🎮 Tekken 8 themed color scheme (grey/pink)
+- 🔗 Embeddable timer version for external websites
 
 ## Updating Battle Pass Dates
 
 To update the dates for a new battle pass season:
 
-1. Open `index.html`
-2. Locate the `battlePassConfig` object in the `<script>` section (around line 234)
+1. Open `timer.js`
+2. Locate the `fightPassConfig` object at the top of the file
 3. Update the `startDate` and `endDate` with the new battle pass dates:
 
 ```javascript
-const battlePassConfig = {
+const fightPassConfig = {
     startDate: new Date('2025-10-01T00:00:00Z'),  // Update this
     endDate: new Date('2025-12-31T23:59:59Z')      // Update this
 };
@@ -41,6 +43,33 @@ const battlePassConfig = {
 
 4. Dates should be in ISO 8601 format with UTC timezone (Z suffix)
 5. Save the file and refresh the page
+
+Note: Both `index.html` and `embed.html` use the same `timer.js` file, so updating the dates once will update both pages.
+
+## Embedding the Timer
+
+The project includes a minimal `embed.html` page designed specifically for embedding on external websites. This page includes only the timer display without ads, footer, or Ko-fi support links.
+
+### How to Embed
+
+You can embed the timer on your website using an iframe:
+
+```html
+<iframe 
+  src="https://fightpass.gg/embed.html" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+  style="border: none; max-width: 800px;">
+</iframe>
+```
+
+### Customization
+
+To customize the embedded timer appearance, you can:
+- Adjust the iframe `width` and `height` to fit your layout
+- Add CSS styling to the iframe container on your website
+- For advanced customization, you can host your own copy of `embed.html` and `timer.js`
 
 ## Adding Google AdSense
 
