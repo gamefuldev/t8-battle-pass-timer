@@ -2,8 +2,8 @@
 // Update these dates for each new fight pass
 const fightPassConfig = {
   // Example dates - Update these with actual Tekken 8 fight pass dates
-  startDate: new Date('2025-10-13T22:00:00Z'),
-  endDate: new Date('2025-12-01T03:59:59Z'),
+  startDate: new Date('2025-12-01T22:00:00Z'),
+  endDate: new Date('2026-03-16T03:59:59Z'),
 }
 
 // Display timezone to force for date/time outputs. Change if you want a different zone.
